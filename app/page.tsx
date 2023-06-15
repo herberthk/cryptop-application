@@ -1,113 +1,148 @@
-import Image from 'next/image'
+"use client";
+import AutoComplete from "@/components/AutoComplete";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import { icons } from "@/data";
+import Image from "next/image";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { motion } from "framer-motion";
+import { oswald } from "@/fonts";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import useTheme from "@mui/material/styles/useTheme";
 
 export default function Home() {
+  const theme = useTheme();
+  const matchDownMd = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Container maxWidth="lg">
+      <Box
+        maxWidth="md"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+        gap={4}
+      >
+        <Typography
+          className={oswald.className}
+          variant="h3"
+          mt={4}
+          fontSize={{ md: "3rem", xs: "1.5rem" }}
+          width={{ md: "70%", xs: "100%" }}
+          textAlign="center"
+          fontWeight="700"
+        >
+          Search and trade over 3 million tokens
+        </Typography>
+        <AutoComplete width={matchDownMd ? "100%" : "70%"} />
+        <Box display="flex" mt={4} gap={2}>
+          <Typography fontSize={22}>or</Typography>
+          <Button variant="contained" sx={{ borderRadius: "20px" }}>
+            Start trading
+          </Button>
+        </Box>
+      </Box>
+      <Stack
+        spacing={4}
+        mt={6}
+        justifyContent="space-between"
+        direction={{ md: "row", xs: "column" }}
+      >
+        <Stack
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          width={{ md: "67%", xs: "100%" }}
+          padding={4}
+          spacing={6}
+          sx={{ boxShadow: "0 0 20px rgba(0,0,0,0.1)", borderRadius: "12px" }}
+        >
+          <Typography
+            textAlign="center"
+            className={oswald.className}
+            variant="h4"
+            fontWeight={700}
+            fontSize={{ md: "3rem", xs: "1.5rem" }}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+            The widest coverage of tokens, networks and DEXs.
+          </Typography>
+          <Typography fontSize={20} textAlign="center">
+            With over +3 million tokens, you will find even the freshest drops
+            within minutes of hitting the chain.
+          </Typography>
+          <Box display="flex" gap={{ md: 3, xs: 1 }}>
+            {icons.map(({ iconUrl, name }) => (
+              <Box
+                key={name}
+                position="relative"
+                sx={{ cursor: "pointer" }}
+                width={40}
+                height={40}
+                component={motion.div}
+                whileHover={{
+                  transform: "translateY(-7px)",
+                }}
+              >
+                <Image src={iconUrl} alt={name} title={name} fill />
+              </Box>
+            ))}
+            <Box
+              width={45}
+              height={45}
+              borderRadius={50}
+              boxShadow="0 0 20px rgba(0,0,0,0.3)"
+              alignItems="center"
+              justifyContent="center"
+              display="flex"
+              component={motion.div}
+              whileHover={{
+                transform: "translateY(-7px)",
+              }}
+            >
+              <Typography>+3M</Typography>
+            </Box>
+          </Box>
+        </Stack>
+        <Stack
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          width={{ md: "30%", xs: "100%" }}
+          padding={4}
+          spacing={4}
+          sx={{ boxShadow: "0 0 20px rgba(0,0,0,0.1)", borderRadius: "12px" }}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+          <Typography
+            textAlign="center"
+            className={oswald.className}
+            variant="h5"
+            fontWeight={700}
+          >
+            Deep liquidity, and the best trade rates.
+          </Typography>
+          <Box display="flex" flexDirection="column" gap={2}>
+            <Box display="flex" gap={3}>
+              <CheckCircleIcon fontSize="large" color="success" />
+              <Typography fontSize={18}>Aggregated liquidity</Typography>
+            </Box>
+            <Box display="flex" gap={3}>
+              <CheckCircleIcon fontSize="large" color="success" />
+              <Typography fontSize={18}>Over 100+ DEXs</Typography>
+            </Box>
+            <Box display="flex" gap={3}>
+              <CheckCircleIcon fontSize="large" color="success" />
+              <Typography fontSize={18}>Smart order routing</Typography>
+            </Box>
+            <Box display="flex" gap={3}>
+              <CheckCircleIcon fontSize="large" color="success" />
+              <Typography fontSize={18}>Best execution</Typography>
+            </Box>
+          </Box>
+        </Stack>
+      </Stack>
+    </Container>
+  );
 }
