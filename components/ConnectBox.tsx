@@ -105,6 +105,7 @@ const ConnectBox: FC<Props> = ({ baseToken, quoteToken }) => {
                 alt={quoteToken.name}
                 width={20}
                 height={20}
+                priority
               />
               <Typography fontWeight={800} textTransform="uppercase">
                 {quoteToken.code}
@@ -177,6 +178,7 @@ const ConnectBox: FC<Props> = ({ baseToken, quoteToken }) => {
             alt={baseToken.name}
             width={20}
             height={20}
+            priority
           />
           <Typography fontWeight={800} textTransform="uppercase">
             {baseToken.code}

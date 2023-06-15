@@ -36,7 +36,13 @@ const FormModal: React.FC<Props> = ({ openModal, setOpenModal }) => {
           <ListItem key={t.id} disableGutters>
             <ListItemButton onClick={() => handleListItemClick(t)}>
               <ListItemAvatar>
-                <Image width={35} height={35} src={t.iconUrl} alt={t.name} />
+                <Image
+                  priority
+                  width={35}
+                  height={35}
+                  src={t.iconUrl}
+                  alt={t.name}
+                />
               </ListItemAvatar>
               <ListItemText primary={t.name} />
             </ListItemButton>

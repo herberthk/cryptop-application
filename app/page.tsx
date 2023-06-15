@@ -86,7 +86,7 @@ export default function Home() {
                   transform: "translateY(-7px)",
                 }}
               >
-                <Image src={iconUrl} alt={name} title={name} fill />
+                <Image priority src={iconUrl} alt={name} title={name} fill />
               </Box>
             ))}
             <Box
