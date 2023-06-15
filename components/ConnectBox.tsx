@@ -22,7 +22,7 @@ const ConnectBox: FC<Props> = ({ baseToken, quoteToken }) => {
 
   // This is the right time to call smart-contract function to connect wallet
   const connectToWallet = () => {
-    if (!baseToken.token || !quoteToken.token) {
+    if (!baseToken || !quoteToken) {
       toast.error("Please select payment and receiving token", {
         closeOnClick: true,
         progress: undefined,
