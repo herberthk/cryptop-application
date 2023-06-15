@@ -92,7 +92,10 @@ const Error = () => {
     >
       <Typography variant="h4">Sorry something went wrong</Typography>
       <Typography variant="h5">
-        You can check your internet connection and refresh the page
+        Sometimes it happens since we are using free API, the API returns error
+      </Typography>
+      <Typography variant="h5">
+        However you can check your internet connection and refresh the page
       </Typography>
     </Stack>
   );
