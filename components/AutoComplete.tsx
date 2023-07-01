@@ -17,17 +17,18 @@ type Props = {
 };
 
 const AutoComplete: FC<Props> = ({ width = "70%", home = true }) => {
-  const router = useRouter();
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const onChange = (
     e: React.SyntheticEvent<Element, Event>,
     newValue: Token | null
   ) => {
     if (home) {
       dispatch(updateBaseToken(newValue!));
-      router.push(`/tokens/${newValue?.name.toLowerCase()}/${newValue?.token}`);
-    }
-    if (!home) {
+      return router.push(
+        `/tokens/${newValue?.name.toLowerCase()}/${newValue?.token}`
+      );
+    } else {
       dispatch(updateBaseToken(newValue!));
     }
   };

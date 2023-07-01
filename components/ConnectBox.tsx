@@ -17,9 +17,8 @@ type Props = {
 };
 
 const ConnectBox: FC<Props> = ({ baseToken, quoteToken }) => {
-  const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
-
+  const router = useRouter();
   // This is the right time to call smart-contract function to connect wallet
   const connectToWallet = () => {
     if (!baseToken || !quoteToken) {
@@ -36,7 +35,7 @@ const ConnectBox: FC<Props> = ({ baseToken, quoteToken }) => {
       });
       return;
     }
-    router.push("/order");
+    return router.push("/order");
   };
 
   return (
